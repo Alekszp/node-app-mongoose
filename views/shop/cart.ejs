@@ -1,0 +1,45 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/cart.css">
+</head>
+
+<body>
+  <%- include('../includes/navigation.ejs') %>
+  <main class="cart">
+    <% if (cartProducts.length) { %>
+    <ul>
+      <% for (let product of cartProducts) { %>
+      <li class="product-row">
+        <img class="product-row__image" src="<%= product.productId.imageURL %>" alt="<%= product.productId.title %>">
+        <div class="product-row__title" title="<%= product.productId.description %>">
+          title:<b>&nbsp;<%= product.productId.title %></b>
+        </div>
+        <div class="product-row__price">
+          price,$:<b>&nbsp;<%= product.productId.price %></b>
+        </div>
+        <div class="product-row__quantity">
+          quantity:<b>&nbsp;<%= product.qty %></b>
+        </div>
+        <div class="product-row__total">
+          total, $:<b>&nbsp;<%= product.productId.price*product.qty  %></b>
+        </div>
+        <div class="product-row__actions">
+          <form action="/cart-delete-item" method="post">
+            <button class="btn" type="submit">Delete</button>
+            <input type="hidden" name="productId" value="<%= product.productId._id %>">
+            <input type="hidden" value="<%= csrfToken  %>" name="_csrf">
+          </form>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+    <hr>
+    <form action="/create-order" method="post">
+      <!-- <input type="hidden" value="<%= csrfToken  %>" name="_csrf">
+      <button type="submit" class="btn">Order</button> -->
+      <a class="btn" href="/checkout">Order now</a>
+    </form>
+    <% } else { %>
+    <h1>Cart is empty</h1>
+    <% } %>
+  </main>
+  <%- include('../includes/end.ejs') %>

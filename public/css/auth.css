@@ -1,0 +1,19 @@
+.login-form,
+.signup-form,
+.reset-password-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+}
+
+.login h1,
+.signup h1,
+.reset-password h1 {
+  text-align: center;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}

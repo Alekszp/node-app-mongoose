@@ -1,0 +1,13 @@
+.checkout .product-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkout .product-row .product-row__image{
+  height: 30px;
+}
+
+.checkout .product-row > div{
+  margin: 0 10px;
+}
